@@ -1,0 +1,41 @@
+{
+  "name": "Oracle PySpark Account Pipeline",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "runServices": [
+    "app",
+    "oracle"
+  ],
+  "workspaceFolder": "/workspaces/oracle-pyspark-account-pipeline",
+  "remoteUser": "vscode",
+  "shutdownAction": "stopCompose",
+  "initializeCommand": "bash .devcontainer/check-prerequisites.sh",
+  "postCreateCommand": "bash .devcontainer/post-create.sh",
+  "features": {
+    "ghcr.io/devcontainers-extra/features/uv:1": {},
+    "ghcr.io/devcontainers/features/java:1": {
+      "version": "17",
+      "jdkDistro": "zulu",
+      "installMaven": false,
+      "installGradle": false
+    }
+  },
+  "containerEnv": {
+    "PYSPARK_PYTHON": "/workspaces/oracle-pyspark-account-pipeline/.venv/bin/python",
+    "SPARK_CONF_DIR": "/workspaces/oracle-pyspark-account-pipeline/config"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-toolsai.jupyter"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "/workspaces/oracle-pyspark-account-pipeline/.venv/bin/python",
+        "jupyter.notebookFileRoot": "${workspaceFolder}"
+      }
+    }
+  }
+}
+

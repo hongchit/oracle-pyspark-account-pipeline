@@ -4,6 +4,7 @@
 .ipynb_checkpoints/
 __pycache__/
 *.py[cod]
+legacy-app/target/
 
 # Generated project outputs
 data/*
@@ -15,4 +16,3 @@ reports/*
 .DS_Store
 .idea/
 .vscode/
-

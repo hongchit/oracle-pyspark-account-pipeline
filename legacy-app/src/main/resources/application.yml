@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: legacy-app
+  main:
+    web-application-type: none
+  datasource:
+    url: jdbc:oracle:thin:@//${ORACLE_HOST:oracle}:${ORACLE_PORT:1521}/${ORACLE_SERVICE:FREEPDB1}
+    username: ACCOUNT_APP
+    password: ${APP_DB_PASSWORD}
+    driver-class-name: oracle.jdbc.OracleDriver
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC

@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ ! ${APP_DB_PASSWORD:-} =~ ^[A-Za-z0-9]{16,64}$ ]]; then
+  printf '%s\n' \
+    'APP_DB_PASSWORD must contain 16-64 ASCII letters or digits.' >&2
+  exit 1
+fi
+
+sqlplus -s / as sysdba <<SQL
+WHENEVER SQLERROR EXIT SQL.SQLCODE
+ALTER SESSION SET CONTAINER = FREEPDB1;
+
+DECLARE
+  tablespace_count PLS_INTEGER;
+  user_count PLS_INTEGER;
+BEGIN
+  SELECT COUNT(*)
+    INTO tablespace_count
+    FROM dba_tablespaces
+   WHERE tablespace_name = 'ACCOUNT_APP_DATA';
+
+  IF tablespace_count = 0 THEN
+    EXECUTE IMMEDIATE
+      'CREATE TABLESPACE ACCOUNT_APP_DATA '
+      || 'DATAFILE ''/opt/oracle/oradata/FREE/FREEPDB1/account_app_data01.dbf'' '
+      || 'SIZE 100M AUTOEXTEND ON NEXT 50M MAXSIZE 1G';
+  END IF;
+
+  SELECT COUNT(*)
+    INTO user_count
+    FROM dba_users
+   WHERE username = 'ACCOUNT_APP';
+
+  IF user_count = 0 THEN
+    EXECUTE IMMEDIATE
+      'CREATE USER ACCOUNT_APP IDENTIFIED BY "${APP_DB_PASSWORD}" '
+      || 'DEFAULT TABLESPACE ACCOUNT_APP_DATA QUOTA UNLIMITED ON ACCOUNT_APP_DATA';
+  ELSE
+    EXECUTE IMMEDIATE
+      'ALTER USER ACCOUNT_APP IDENTIFIED BY "${APP_DB_PASSWORD}" '
+      || 'DEFAULT TABLESPACE ACCOUNT_APP_DATA ACCOUNT UNLOCK';
+    EXECUTE IMMEDIATE 'ALTER USER ACCOUNT_APP QUOTA UNLIMITED ON ACCOUNT_APP_DATA';
+  END IF;
+END;
+/
+
+GRANT CREATE SESSION, CREATE TABLE TO ACCOUNT_APP;
+EXIT;
+SQL

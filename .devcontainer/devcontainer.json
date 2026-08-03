@@ -16,7 +16,7 @@
     "ghcr.io/devcontainers/features/java:1": {
       "version": "17",
       "jdkDistro": "zulu",
-      "installMaven": false,
+      "installMaven": true,
       "installGradle": false
     }
   },
@@ -29,7 +29,9 @@
       "extensions": [
         "ms-python.python",
         "ms-python.vscode-pylance",
-        "ms-toolsai.jupyter"
+        "ms-toolsai.jupyter",
+        "vscjava.vscode-java-pack",
+        "vmware.vscode-boot-dev-pack"
       ],
       "settings": {
         "python.defaultInterpreterPath": "/workspaces/oracle-pyspark-account-pipeline/.venv/bin/python",
@@ -38,4 +40,3 @@
     }
   }
 }
-

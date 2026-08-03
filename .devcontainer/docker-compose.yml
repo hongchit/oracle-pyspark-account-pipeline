@@ -18,6 +18,7 @@ services:
       - ..:/workspaces/oracle-pyspark-account-pipeline:cached
       - uv-cache:/home/vscode/.cache/uv
       - spark-ivy-cache:/home/vscode/.ivy2
+      - maven-cache:/home/vscode/.m2
     depends_on:
       oracle:
         condition: service_healthy
@@ -32,6 +33,7 @@ services:
     shm_size: 2g
     volumes:
       - oracle-data:/opt/oracle/oradata
+      - ./oracle/create-app-user.sh:/opt/oracle/scripts/startup/01-create-app-user.sh:ro
     healthcheck:
       test: ["CMD", "/opt/oracle/checkDBStatus.sh"]
       interval: 30s
@@ -41,5 +43,6 @@ services:
 
 volumes:
   oracle-data:
+  maven-cache:
   spark-ivy-cache:
   uv-cache:

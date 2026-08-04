@@ -5,7 +5,7 @@ spring:
     web-application-type: none
   datasource:
     url: jdbc:oracle:thin:@//${ORACLE_HOST:oracle}:${ORACLE_PORT:1521}/${ORACLE_SERVICE:FREEPDB1}
-    username: ACCOUNT_APP
+    username: ${APP_DB_USERNAME}
     password: ${APP_DB_PASSWORD}
     driver-class-name: oracle.jdbc.OracleDriver
   jpa:
@@ -15,4 +15,4 @@ spring:
     properties:
       hibernate:
         jdbc:
-          time_zone: UTC
+          '[time_zone]': UTC

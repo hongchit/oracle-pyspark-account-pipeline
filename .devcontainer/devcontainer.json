@@ -31,7 +31,8 @@
         "ms-python.vscode-pylance",
         "ms-toolsai.jupyter",
         "vscjava.vscode-java-pack",
-        "vmware.vscode-boot-dev-pack"
+        "vmware.vscode-boot-dev-pack",
+        "Oracle.sql-developer"
       ],
       "settings": {
         "python.defaultInterpreterPath": "/workspaces/oracle-pyspark-account-pipeline/.venv/bin/python",

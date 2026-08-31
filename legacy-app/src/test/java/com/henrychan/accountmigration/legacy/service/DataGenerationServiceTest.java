@@ -27,7 +27,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 class DataGenerationServiceTest {
 
   private static final LocalDate PROCESSING_DATE = LocalDate.of(2026, 8, 1);
-  private static final long SEED = 42L;
+  private static final long SEED = 12L;
 
   @Mock private AccountRepository accountRepository;
 

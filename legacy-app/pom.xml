@@ -57,17 +57,13 @@
         <artifactId>spotless-maven-plugin</artifactId>
         <version>${spotless-maven-plugin.version}</version>
         <configuration>
-          <encoding>UTF-8</encoding>
           <lineEndings>UNIX</lineEndings>
           <java>
             <removeUnusedImports/>
             <forbidWildcardImports/>
             <googleJavaFormat>
               <version>${google-java-format.version}</version>
-              <style>GOOGLE</style>
             </googleJavaFormat>
-            <trimTrailingWhitespace/>
-            <endWithNewline/>
           </java>
         </configuration>
         <executions>
@@ -94,12 +90,9 @@
         <configuration>
           <configLocation>google_checks.xml</configLocation>
           <consoleOutput>true</consoleOutput>
-          <failOnViolation>true</failOnViolation>
           <includeResources>false</includeResources>
           <includeTestResources>false</includeTestResources>
           <includeTestSourceDirectory>true</includeTestSourceDirectory>
-          <inputEncoding>UTF-8</inputEncoding>
-          <linkXRef>false</linkXRef>
           <violationSeverity>warning</violationSeverity>
         </configuration>
         <executions>

@@ -18,7 +18,7 @@ services:
       - ..:/workspaces/oracle-pyspark-account-pipeline:cached
       - uv-cache:/home/vscode/.cache/uv
       - spark-ivy-cache:/home/vscode/.ivy2
-      - maven-cache:/home/vscode/.m2
+      - maven-cache:/home/vscode/.m2/repository
     depends_on:
       oracle:
         condition: service_healthy
@@ -44,5 +44,11 @@ services:
 volumes:
   oracle-data:
   maven-cache:
+    external: true
+    name: devcontainer-maven-cache
   spark-ivy-cache:
+    external: true
+    name: devcontainer-spark-ivy-cache
   uv-cache:
+    external: true
+    name: devcontainer-uv-cache

@@ -85,7 +85,7 @@ public class DataGenerationService {
       accounts.add(
           new Account(
               accountIdBase + index,
-              "Synthetic Customer " + index,
+              "Customer " + index,
               randomMoney(random, 10_000, 500_000),
               "ACTIVE",
               generationRunId));

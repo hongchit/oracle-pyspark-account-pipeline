@@ -42,7 +42,7 @@ class LegacyBatchIntegrationTest {
 
   @Test
   void fullLegacyBatchProducesVerifiedDailyBalances() {
-    dataGenerationService.generate(PROCESSING_DATE, 42L, true);
+    dataGenerationService.generate(PROCESSING_DATE, 12L, true);
     LegacyBatchSummary summary = legacyBatchService.run(PROCESSING_DATE, BATCH_ID);
 
     List<Account> accounts = accountRepository.findAll();

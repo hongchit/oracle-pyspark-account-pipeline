@@ -30,9 +30,12 @@
         "ms-python.python",
         "ms-python.vscode-pylance",
         "ms-toolsai.jupyter",
+        "ms-toolsai.datawrangler",
+        "ms-toolsai.pyspark",
         "vscjava.vscode-java-pack",
         "vmware.vscode-boot-dev-pack",
-        "Oracle.sql-developer"
+        "Oracle.sql-developer",
+        "mechatroner.rainbow-csv"
       ],
       "settings": {
         "python.defaultInterpreterPath": "/workspaces/oracle-pyspark-account-pipeline/.venv/bin/python",

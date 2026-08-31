@@ -795,7 +795,7 @@ wheels = [
 [[package]]
 name = "oracle-pyspark-account-pipeline"
 version = "0.1.0"
-source = { virtual = "." }
+source = { editable = "." }
 dependencies = [
     { name = "oracledb" },
     { name = "pyspark" },

@@ -18,7 +18,7 @@
   <description>Spring Boot JPA schema module for the Oracle balance migration demo.</description>
 
   <properties>
-    <checkstyle.version>12.2.0</checkstyle.version>
+    <checkstyle.version>14.4.0</checkstyle.version>
     <google-java-format.version>1.28.0</google-java-format.version>
     <java.version>17</java.version>
     <maven-checkstyle-plugin.version>3.6.0</maven-checkstyle-plugin.version>

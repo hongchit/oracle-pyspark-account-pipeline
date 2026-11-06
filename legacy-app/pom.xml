@@ -23,7 +23,7 @@
     <java.version>17</java.version>
     <maven-checkstyle-plugin.version>3.6.0</maven-checkstyle-plugin.version>
     <oracle.jdbc.version>23.26.2.0.0</oracle.jdbc.version>
-    <spotless-maven-plugin.version>3.6.0</spotless-maven-plugin.version>
+    <spotless-maven-plugin.version>3.11.0</spotless-maven-plugin.version>
   </properties>
 
   <dependencies>
